@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SchoolManagement.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace SchoolManagement.Controllers
 {
@@ -13,11 +16,9 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult History()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View("About");
         }
 
         public ActionResult Contact()

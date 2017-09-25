@@ -20,6 +20,10 @@ namespace SchoolManagement.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<BoardOfDirector> BoardOfDirectors { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

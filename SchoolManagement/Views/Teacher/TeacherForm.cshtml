@@ -1,0 +1,67 @@
+﻿@model SchoolManagement.Models.Teacher
+@{
+    ViewBag.Title = "Teacher Form";
+}
+
+<h2>Teacher Form</h2>
+
+@using (Html.BeginForm("Save", "Teacher"))
+{
+    @Html.ValidationSummary(true, "Please fix following errors.")
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Designation)
+        @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Designation)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EducationalQualification)
+        @Html.TextAreaFor(m => m.EducationalQualification, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EducationalQualification)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateOfBirth)
+        @Html.TextBoxFor(m => m.DateOfBirth, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DateOfBirth)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.TextBoxFor(m => m.StartDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StartDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.TextBoxFor(m => m.EndDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EndDate)
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Status) Active
+            @Html.ValidationMessageFor(m => m.Status)
+        </label>
+    </div>
+    @Html.HiddenFor(c => c.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@Html.ActionLink("Go back", "Index", "Teacher")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

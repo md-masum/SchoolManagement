@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SchoolManagement.Models.Teacher>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="text-center text-primary">
+    <span class="glyphicon glyphicon-user"></span>
+    Teachers
+</h1>
+
+<br /><br />
+@Html.ActionLink("Add New", "New", "Teacher", null, new {@class="btn btn-primary"})
+<br /><br />
+
+<table id="teacherdata" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Educational Qualification</th>
+            <th>DateOfBirth</th>
+            <th>PhoneNumber</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+            <th>Status</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#teacherdata").DataTable({
+                ajax: {
+                    url: "/api/teachers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, row) {
+                            return "<a href='/teacher/edit/" + row.id + "'>" + row.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "designation"
+                    },
+                    {
+                        data: "educationalQualification"
+                    },
+                    {
+                        data: "dateOfBirth"
+                    },
+                    {
+                        data: "phoneNumber"
+                    },
+                    {
+                        data: "startDate"
+                    },
+                    {
+                        data: "endDate"
+                    },
+                    {
+                        data: "status"
+                    },
+                    {
+                        data: "id",
+                        render:function(data) {
+                        return "<button class='btn-link js-delete' data-teacher-id=" + data + ">Delete</button>";
+                        }
+                    }
+                    ]
+            });
+
+            $("#teacherdata").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this record?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/teachers/" + button.attr("data-teacher-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+

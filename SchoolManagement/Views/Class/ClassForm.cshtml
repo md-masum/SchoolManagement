@@ -1,0 +1,39 @@
+﻿@model SchoolManagement.ViewModel.ClassFromViewModel
+@{
+    ViewBag.Title = "ClassForm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Class Form</h2>
+
+@using (Html.BeginForm("Save", "Class"))
+{
+    @Html.ValidationSummary(true, "Please fix following errors.")
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Class.ClassInfoId)
+        @Html.DropDownListFor(c => c.ClassInfoId, new SelectList(Model.ClassInfos, "Id", "Name"), "Select Class", new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.ClassInfoId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Class.SectionId)
+        @Html.DropDownListFor(c => c.SectionId, new SelectList(Model.Sections, "Id", "Name"), "Select Section", new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.SectionId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.DepartmentId)
+        @Html.DropDownListFor(c => c.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Select Department", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.DepartmentId)
+    </div>
+
+    @Html.HiddenFor(c => c.Class.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

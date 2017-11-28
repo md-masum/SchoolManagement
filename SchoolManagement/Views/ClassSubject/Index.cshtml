@@ -1,0 +1,71 @@
+﻿@using System.Web.Mvc.Html
+@model SchoolManagement.ViewModel.ClassSubjectViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Model.Class.ClassInfo.Name</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Class Name: @Model.Class.ClassInfo.Name</li>
+            <li class="list-group-item list-group-item-info text-success">Section: @Model.Class.Section.Name</li>
+            @if (Model.Class.DepartmentId.HasValue)
+            {
+                <li class="list-group-item list-group-item-warning">Department Name: @Model.Class.Department.Name</li>
+            }
+        </ul>
+        @*@Html.ActionLink("Assign Subject", "Edit", "Customers", new { id = customer.Id }, null)*@
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Add Subject</h2>
+        @using (Html.BeginForm("Save", "ClassSubject"))
+        {
+            @Html.ValidationSummary(true, "Please fix following errors.")
+
+            @*<div class="form-group">
+                @Html.LabelFor(c => c.ClassId)
+                @Html.TextBoxFor(m => m.ClassId, new { @class = "form-control", @readonly = true })
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(c => c.SubjectId)
+                @Html.DropDownListFor(c => c.SubjectId, new SelectList(Model.Subjects, "Id", "Name"), "Select Subject", new {@class = "form-control"})
+                @Html.ValidationMessageFor(c => c.SubjectId)
+            </div>
+
+            @Html.HiddenFor(c => c.ClassId)
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary">Save</button>
+        }
+    </div>
+</div>
+<div class="row">
+    @if (!Model.ClassSubject.Any())
+    {
+        <p>We don't have any subject yet</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var classes in Model.ClassSubject)
+                {
+                    <tr>
+                        <td>@classes.Subject.Name</td>
+                        <td>@Html.ActionLink("Delete", "New", "Class", null, new { @class = "" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+@Html.ActionLink("go back to class list", "Index", "Class")
+

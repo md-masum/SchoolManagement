@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SchoolManagement.Models.Class>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Class Information</h2>
+
+@Html.ActionLink("New Class", "New", "Class", null, new { @class = "btn btn-default" })
+
+@if (!Model.Any())
+{
+    <p>We don't have any class yet</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Department</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classes in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(classes.ClassInfo.Name, "Details", "Class", new { id = classes.Id }, null)</td>
+                    <td>@classes.Section.Name</td>
+                    <td>@if (classes.DepartmentId == null)
+                        {<p>Null</p>}
+                        else
+                        {
+                            <p>@classes.Department.Name</p>
+                        }</td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Class", new { id = classes.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

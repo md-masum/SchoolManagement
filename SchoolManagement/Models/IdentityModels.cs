@@ -23,6 +23,14 @@ namespace SchoolManagement.Models
         public DbSet<BoardOfDirector> BoardOfDirectors { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<ClassSubject> ClassSubjects { get; set; }
+        public DbSet<ClassInfo> ClassInfos { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentClass> StudentClasses { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

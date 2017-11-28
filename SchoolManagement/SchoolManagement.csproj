@@ -216,15 +216,26 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BoardOfDirectorsController.cs" />
+    <Compile Include="Controllers\Api\ClassesController.cs" />
+    <Compile Include="Controllers\Api\ClassSubjectsController.cs" />
     <Compile Include="Controllers\Api\StaffsController.cs" />
+    <Compile Include="Controllers\Api\StudentsController.cs" />
+    <Compile Include="Controllers\Api\SubjectsController.cs" />
     <Compile Include="Controllers\Api\TeachersController.cs" />
     <Compile Include="Controllers\BoardOfDirectorController.cs" />
+    <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\ClassSubjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\StudentClassController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Dtos\BoardOfDirectorDto.cs" />
+    <Compile Include="Dtos\ClassSubjectDto.cs" />
     <Compile Include="Dtos\StaffDto.cs" />
+    <Compile Include="Dtos\SubjectDto.cs" />
     <Compile Include="Dtos\TeacherDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,16 +256,91 @@
     <Compile Include="Migrations\201709221515202_AddTeacher.Designer.cs">
       <DependentUpon>201709221515202_AddTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710091833208_AddSubject.cs" />
+    <Compile Include="Migrations\201710091833208_AddSubject.Designer.cs">
+      <DependentUpon>201710091833208_AddSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112021377_AddSection.cs" />
+    <Compile Include="Migrations\201710112021377_AddSection.Designer.cs">
+      <DependentUpon>201710112021377_AddSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112024269_PopulateSection.cs" />
+    <Compile Include="Migrations\201710112024269_PopulateSection.Designer.cs">
+      <DependentUpon>201710112024269_PopulateSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112040525_AddClass.cs" />
+    <Compile Include="Migrations\201710112040525_AddClass.Designer.cs">
+      <DependentUpon>201710112040525_AddClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112107149_AddClassAginstSubject.cs" />
+    <Compile Include="Migrations\201710112107149_AddClassAginstSubject.Designer.cs">
+      <DependentUpon>201710112107149_AddClassAginstSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112124012_AddClassInfo.cs" />
+    <Compile Include="Migrations\201710112124012_AddClassInfo.Designer.cs">
+      <DependentUpon>201710112124012_AddClassInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112125172_PopulateClassInfo.cs" />
+    <Compile Include="Migrations\201710112125172_PopulateClassInfo.Designer.cs">
+      <DependentUpon>201710112125172_PopulateClassInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710112135217_EditClass.cs" />
+    <Compile Include="Migrations\201710112135217_EditClass.Designer.cs">
+      <DependentUpon>201710112135217_EditClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161734173_AddDepartment.cs" />
+    <Compile Include="Migrations\201710161734173_AddDepartment.Designer.cs">
+      <DependentUpon>201710161734173_AddDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161735167_PopuleteDepartment.cs" />
+    <Compile Include="Migrations\201710161735167_PopuleteDepartment.Designer.cs">
+      <DependentUpon>201710161735167_PopuleteDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161747043_EditClass1.cs" />
+    <Compile Include="Migrations\201710161747043_EditClass1.Designer.cs">
+      <DependentUpon>201710161747043_EditClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711211632251_UpdateClassSubject.cs" />
+    <Compile Include="Migrations\201711211632251_UpdateClassSubject.Designer.cs">
+      <DependentUpon>201711211632251_UpdateClassSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231501582_AddStudent.cs" />
+    <Compile Include="Migrations\201711231501582_AddStudent.Designer.cs">
+      <DependentUpon>201711231501582_AddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241555126_UpdateStudent.cs" />
+    <Compile Include="Migrations\201711241555126_UpdateStudent.Designer.cs">
+      <DependentUpon>201711241555126_UpdateStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711242029583_StudentClass.cs" />
+    <Compile Include="Migrations\201711242029583_StudentClass.Designer.cs">
+      <DependentUpon>201711242029583_StudentClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711252142284_UpdateStudentClass.cs" />
+    <Compile Include="Migrations\201711252142284_UpdateStudentClass.Designer.cs">
+      <DependentUpon>201711252142284_UpdateStudentClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BoardOfDirector.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\ClassInfo.cs" />
+    <Compile Include="Models\ClassSubject.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentClass.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ClassFromViewModel.cs" />
+    <Compile Include="ViewModel\ClassSubjectViewModel.cs" />
+    <Compile Include="ViewModel\StudentClassViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -368,10 +454,13 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\school.png" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -456,6 +545,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -498,6 +591,18 @@
     <Content Include="Views\Staff\StaffForm.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Teacher\TeacherForm.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Class\Index.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Subject\SubjectForm.cshtml" />
+    <Content Include="Views\Class\ClassForm.cshtml" />
+    <Content Include="Views\Class\Details.cshtml" />
+    <Content Include="Views\ClassSubject\New.cshtml" />
+    <Content Include="Views\ClassSubject\Index.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\StudentForm.cshtml" />
+    <Content Include="Views\StudentClass\Index.cshtml" />
+    <Content Include="Views\StudentClass\StudentClass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -525,6 +630,54 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221515202_AddTeacher.resx">
       <DependentUpon>201709221515202_AddTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091833208_AddSubject.resx">
+      <DependentUpon>201710091833208_AddSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112021377_AddSection.resx">
+      <DependentUpon>201710112021377_AddSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112024269_PopulateSection.resx">
+      <DependentUpon>201710112024269_PopulateSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112040525_AddClass.resx">
+      <DependentUpon>201710112040525_AddClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112107149_AddClassAginstSubject.resx">
+      <DependentUpon>201710112107149_AddClassAginstSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112124012_AddClassInfo.resx">
+      <DependentUpon>201710112124012_AddClassInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112125172_PopulateClassInfo.resx">
+      <DependentUpon>201710112125172_PopulateClassInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112135217_EditClass.resx">
+      <DependentUpon>201710112135217_EditClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161734173_AddDepartment.resx">
+      <DependentUpon>201710161734173_AddDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161735167_PopuleteDepartment.resx">
+      <DependentUpon>201710161735167_PopuleteDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161747043_EditClass1.resx">
+      <DependentUpon>201710161747043_EditClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711211632251_UpdateClassSubject.resx">
+      <DependentUpon>201711211632251_UpdateClassSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231501582_AddStudent.resx">
+      <DependentUpon>201711231501582_AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241555126_UpdateStudent.resx">
+      <DependentUpon>201711241555126_UpdateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711242029583_StudentClass.resx">
+      <DependentUpon>201711242029583_StudentClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711252142284_UpdateStudentClass.resx">
+      <DependentUpon>201711252142284_UpdateStudentClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

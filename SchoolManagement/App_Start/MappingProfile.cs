@@ -21,6 +21,9 @@ namespace SchoolManagement.App_Start
             Mapper.CreateMap<Teacher, TeacherDto>();
             Mapper.CreateMap<TeacherDto, Teacher>().ForMember(c => c.Id, opt => opt.Ignore());
 
+            Mapper.CreateMap<Subject, SubjectDto>();
+            Mapper.CreateMap<SubjectDto, Subject>().ForMember(c => c.Id, opt => opt.Ignore());
+
         }
     }
 }

@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>class subject</h2>
+
+<form id="classSubject">
+    <div class="form-group">
+        <label>Class</label>
+        <div class="tt-container">
+            <input id="clas" type="text" value="" class="form-control" />
+        </div>
+        
+    </div>
+
+    <div class="form-group">
+        <label>Subject</label>
+        <div class="tt-container">
+            <input id="subject" type="text" value="" class="form-control" />
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="subjects" class="list-group"></ul>
+        </div>
+    </div>
+    
+
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            var vm = {
+                subjectIds: []
+            };
+
+            var classes = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/classes?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#clas').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                name: 'classes',
+                display: 'name',
+                source: classes
+            }).on("typeahead:select", function(e, clas) {
+                vm.classId = clas.Id;
+            });
+
+            var subjects = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/subjects?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#subject').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                name: 'subjects',
+                display: 'name',
+                source: subjects
+
+            }).on("typeahead:select", function(e, subject) {
+                $("#subjects").append("<li class='list-group-item'>" + subject.name + "</li>");
+
+                $("#subject").typeahead("val", "");
+
+                vm.subjectIds.push(subject.id);
+            });
+
+            $("#classSubject").submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                        url: "/api/classSubjects",
+                        method: "post",
+                        data: vm
+                    })
+                    .done(function() {
+                        console.log("done");
+                    })
+                    .fail(function() {
+
+                    });
+            });
+
+        });
+    </script>
+}

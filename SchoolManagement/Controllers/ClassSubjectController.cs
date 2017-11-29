@@ -23,37 +23,19 @@ namespace SchoolManagement.Controllers
             _context.Dispose();
         }
 
-        public ActionResult Index(int? id)
+        public ActionResult Index(int id)
         {
             
-
-            if (id != null)
-            {
                 var viewModel = new ClassSubjectViewModel
                 {
                     
                     Class = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == id),
-                    ClassId = (int) id,
                     Subjects = _context.Subjects.ToList(),
                     ClassSubject = _context.ClassSubjects.Include(c => c.Subject).Where(c => c.ClassId == id).ToList()
                 };
                 return View(viewModel);
-            }
-            else
-            {
-                if(TempData["message"] == null)
-                    return HttpNotFound();
-
-                int message = (int)TempData["message"];
-                var viewData = new ClassSubjectViewModel
-                {
-                    Class = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == message),
-                    ClassId = message,
-                    Subjects = _context.Subjects.ToList(),
-                    ClassSubject = _context.ClassSubjects.Include(c => c.Subject).Where(c => c.ClassId == id).ToList()
-                };
-                return View(viewData);
-            }
+            
+            
             
 
         }
@@ -68,13 +50,13 @@ namespace SchoolManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(ClassSubject classSubject)
         {
-              int id = classSubject.ClassId;
+              int Clsid = classSubject.ClassId;
 
-            TempData["message"] = id;
+            TempData["message"] = Clsid;
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "ClassSubject");
+                return RedirectToAction("Index", "ClassSubject", new {id = Clsid});
             }
             else
             {
@@ -84,7 +66,7 @@ namespace SchoolManagement.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "ClassSubject");
+            return RedirectToAction("Index", "ClassSubject", new { id = Clsid });
         }
     }
 }

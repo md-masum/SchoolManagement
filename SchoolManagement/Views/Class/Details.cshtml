@@ -1,4 +1,5 @@
-﻿@model SchoolManagement.ViewModel.ClassFromViewModel
+﻿@using System.Web.Mvc.Html
+@model SchoolManagement.ViewModel.ClassFromViewModel
 @{
     ViewBag.Title = @Model.Class.ClassInfo.Name;
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -24,6 +25,7 @@
     </div>
 </div>
 <div class="row">
+    <h2>Subject List</h2>
     @if (!Model.ClassSubject.Any())
     {
         <p>We don't have any subject yet</p>
@@ -32,23 +34,56 @@
     {
         <table class="table table-bordered table-hover">
             <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Delete</th>
-                </tr>
+            <tr>
+                <th>Subject</th>
+                <th>Delete</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var classes in Model.ClassSubject)
-                {
-                    <tr>
-                        <td>@classes.Subject.Name</td>
-                    <td>@Html.ActionLink("Delete", "New", "Class", null, new { @class = "" })</td>
+            @foreach (var classes in Model.ClassSubject)
+            {
+                <tr>
+                    <td>@classes.Subject.Name</td>
+                    <td>@Html.ActionLink("Delete", "New", "Class", null, new {@class = ""})</td>
                 </tr>
-                }
+            }
             </tbody>
         </table>
     }
 </div>
+
+<div class="row">
+    <h2>Student List</h2>
+    @if (!Model.StudentClasses.Any())
+    {
+        <p>We Dont Have Any Student Yet</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Nick Name</th>
+                <th>Phone No</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var classes in Model.StudentClasses)
+            {
+                <tr>
+                    <td>@Html.ActionLink(classes.Student.FirstName, "Subject", "StudentClass", new {id = classes.StudentId, classId = classes.ClassId}, null)</td>
+                    <td>@classes.Student.LastName</td>
+                    <td>@classes.Student.NickName</td>
+                    <td>@classes.Student.PhoneNo</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
+
 @Html.ActionLink("go back to class list", "Index", "Class", null, new {@class = "btn btn-default" })
 
 

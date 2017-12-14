@@ -25,18 +25,24 @@ namespace SchoolManagement.Controllers
 
         public ActionResult Index(int id)
         {
-            
+            var classes = _context.Classes.SingleOrDefault(c => c.Id == id);
+
+            if (classes == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
                 var viewModel = new ClassSubjectViewModel
                 {
-                    
+
                     Class = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == id),
+                    ClassId = id,
                     Subjects = _context.Subjects.ToList(),
                     ClassSubject = _context.ClassSubjects.Include(c => c.Subject).Where(c => c.ClassId == id).ToList()
                 };
                 return View(viewModel);
-            
-            
-            
+            } 
 
         }
 
@@ -50,13 +56,12 @@ namespace SchoolManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(ClassSubject classSubject)
         {
-              int Clsid = classSubject.ClassId;
+              int clsid = classSubject.ClassId;
 
-            TempData["message"] = Clsid;
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "ClassSubject", new {id = Clsid});
+                return RedirectToAction("Index", "ClassSubject", new {id = clsid});
             }
             else
             {
@@ -66,7 +71,7 @@ namespace SchoolManagement.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "ClassSubject", new { id = Clsid });
+            return RedirectToAction("Index", "ClassSubject", new { id = clsid });
         }
     }
 }

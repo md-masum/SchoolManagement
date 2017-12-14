@@ -28,6 +28,12 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        public ActionResult GoverningBody()
+        {
+            var boardOfdirector = _context.BoardOfDirectors.ToList();
+            return View(boardOfdirector);
+        }
+
         public ActionResult New()
         {
             var board = new BoardOfDirector();

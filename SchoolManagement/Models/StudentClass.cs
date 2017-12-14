@@ -9,7 +9,7 @@ namespace SchoolManagement.Models
     {
         public int Id { get; set; }
 
-        //public bool IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         public Student Student { get; set; }
         public int StudentId { get; set; }

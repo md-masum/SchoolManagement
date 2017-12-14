@@ -4,16 +4,35 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SchoolManagement.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace SchoolManagement.Controllers
 {
     public class TeacherController : Controller
     {
+        private ApplicationUserManager _userManager;
         private ApplicationDbContext _context;
 
         public TeacherController()
         {
             _context = new ApplicationDbContext();
+        }
+
+        public TeacherController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().Get<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -27,8 +46,23 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        public ActionResult TeacherInfo()
+        {
+            var teacher = _context.Teachers.ToList();
+            return View(teacher);
+        }
+
         public ActionResult New()
         {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var user in UserManager.Users)
+            {
+                list.Add(new SelectListItem() { Value = user.Id, Text = user.UserName });
+            }
+
+            ViewBag.Teacher = list;
+
+
             var teacher = new Teacher();
             return View("TeacherForm", teacher);
         }
@@ -39,6 +73,14 @@ namespace SchoolManagement.Controllers
         {
             if (!ModelState.IsValid)
             {
+                List<SelectListItem> list = new List<SelectListItem>();
+                foreach (var user in UserManager.Users)
+                {
+                    list.Add(new SelectListItem() { Value = user.Id, Text = user.UserName });
+                }
+
+                ViewBag.Teacher = list;
+
                 var data = teacher;
 
                 return View("TeacherForm", data);
@@ -58,6 +100,7 @@ namespace SchoolManagement.Controllers
                 dataInDb.StartDate = teacher.StartDate;
                 dataInDb.EndDate = teacher.EndDate;
                 dataInDb.Status = teacher.Status;
+                dataInDb.UserId = teacher.UserId;
             }
 
             _context.SaveChanges();
@@ -67,6 +110,14 @@ namespace SchoolManagement.Controllers
 
         public ActionResult Edit(int id)
         {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var user in UserManager.Users)
+            {
+                list.Add(new SelectListItem() { Value = user.Id, Text = user.UserName });
+            }
+
+            ViewBag.Teacher = list;
+
             var teacher = _context.Teachers.SingleOrDefault(c => c.Id == id);
 
             if (teacher == null)

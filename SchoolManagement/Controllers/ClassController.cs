@@ -86,14 +86,17 @@ namespace SchoolManagement.Controllers
 
         public ActionResult Details(int id)
         {
+            var activeStudent =
+                _context.StudentClasses.Where(c => c.ClassId == id).Where(c => c.IsActive).Select(c => c.StudentId);
+
             var viewData = new ClassFromViewModel
             {
                 Class = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == id),
-                ClassSubject = _context.ClassSubjects.Include(c => c.Subject).Where(c => c.ClassId == id).ToList()
-                //from c in _context.Classes
-                //select new { Id = c.Id, Name = c.ClassInfo.Name }
+                ClassSubject = _context.ClassSubjects.Include(c => c.Subject).Where(c => c.ClassId == id).ToList(),
+                StudentClasses = _context.StudentClasses.Include(c => c.Student).Where(c => c.ClassId == id).Where(c => c.IsActive).ToList()
             };
-            //var classes = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == id);
+
+
 
             if (viewData.Class == null)
                 return HttpNotFound();

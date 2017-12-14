@@ -74,14 +74,15 @@
                 <th>Class</th>
                 <th>Section</th>
                 <th>Department</th>
-                <th>Add</th>
+                <th>Acctivity</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
             @foreach (var classes in Model.StudentClass)
             {
                 <tr>
-                    <td>@classes.Class.ClassInfo.Name</td>
+                    <td>@Html.ActionLink(classes.Class.ClassInfo.Name, "Subject", "StudentClass", new { id = Model.Student.Id, classId = classes.Class.Id }, null)</td>
                     <td>@classes.Class.Section.Name</td>
                     <td>
                         @if (classes.Class.DepartmentId == null)
@@ -91,7 +92,23 @@
                             <p>@classes.Class.Department.Name</p>
                         }
                     </td>
-                    <td>@Html.ActionLink("Edit", "New", "Class", null, new {@class = ""})</td>
+                    @if (classes.IsActive)
+                    {
+                        <td><p class="text-danger">Active</p></td>
+                    }
+                    else
+                    {
+                        <td><p class="text-success">Passed</p></td>
+                    }
+                    <td>
+                        @if (!classes.IsActive)
+                        {
+                            <a href="@Url.Action("Delete", "StudentClass", new { id = Model.Student.Id, classId = classes.Class.Id }, null)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        }
+                        
+                    </td>
                 </tr>
             }
             </tbody>

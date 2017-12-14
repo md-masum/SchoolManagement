@@ -26,6 +26,12 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        public ActionResult StaffInfo()
+        {
+            var staff = _context.Staffs.ToList();
+            return View(staff);
+        }
+
         public ActionResult New()
         {
             var staff = new Staff();

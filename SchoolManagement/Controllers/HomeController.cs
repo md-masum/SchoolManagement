@@ -27,5 +27,20 @@ namespace SchoolManagement.Controllers
 
             return View();
         }
+
+        public ActionResult Gallery()
+        {
+            return View();
+        }
+
+        public ActionResult StudentLaw()
+        {
+            return View();
+        }
+
+        public ActionResult Admission()
+        {
+            return View();
+        }
     }
 }

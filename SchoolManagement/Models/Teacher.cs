@@ -39,5 +39,8 @@ namespace SchoolManagement.Models
         public DateTime? EndDate { get; set; }
 
         public bool Status { get; set; }
+
+        [Display(Name = "Login Name")]
+        public string UserId { get; set; }
     }
 }

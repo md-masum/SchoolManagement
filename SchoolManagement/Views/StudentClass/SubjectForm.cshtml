@@ -1,0 +1,58 @@
+﻿@using System.Web.Mvc.Html
+@model SchoolManagement.Models.Result
+@{
+    ViewBag.Title = "SubjectForm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Subject Result</h2>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        @using (Html.BeginForm("Update", "StudentClass"))
+        {
+            <div class="jumbotron">
+                @Html.ValidationSummary(true, "Please fix following errors.")
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Student.NickName)
+                    @Html.TextBoxFor(m => m.Student.NickName, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.Student.NickName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Class.ClassInfo.Name)
+                    @Html.TextBoxFor(m => m.Class.ClassInfo.Name, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.Class.ClassInfo.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstTerm)
+                    @Html.TextBoxFor(m => m.FirstTerm, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.FirstTerm)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SecondTerm)
+                    @Html.TextBoxFor(m => m.SecondTerm, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.SecondTerm)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ThirdTerm)
+                    @Html.TextBoxFor(m => m.ThirdTerm, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.ThirdTerm)
+                </div>
+                @Html.HiddenFor(c => c.Id)
+                @Html.HiddenFor(c => c.StudentId)
+                @Html.HiddenFor(c => c.ClassId)
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary">Update</button><br/>
+                @Html.ActionLink("Cancel", "Subject", "StudentClass", new { id = Model.StudentId, classId = Model.ClassId }, null)
+            </div>
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

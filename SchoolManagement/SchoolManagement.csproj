@@ -227,11 +227,13 @@
     <Compile Include="Controllers\ClassSubjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentClassController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Dtos\BoardOfDirectorDto.cs" />
     <Compile Include="Dtos\ClassSubjectDto.cs" />
     <Compile Include="Dtos\StaffDto.cs" />
@@ -320,6 +322,34 @@
     <Compile Include="Migrations\201711252142284_UpdateStudentClass.Designer.cs">
       <DependentUpon>201711252142284_UpdateStudentClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031942080_AddResult.cs" />
+    <Compile Include="Migrations\201712031942080_AddResult.Designer.cs">
+      <DependentUpon>201712031942080_AddResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712032130411_AddResult1.cs" />
+    <Compile Include="Migrations\201712032130411_AddResult1.Designer.cs">
+      <DependentUpon>201712032130411_AddResult1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712042028104_RemoveResult.cs" />
+    <Compile Include="Migrations\201712042028104_RemoveResult.Designer.cs">
+      <DependentUpon>201712042028104_RemoveResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712042033237_AddResultAgain.cs" />
+    <Compile Include="Migrations\201712042033237_AddResultAgain.Designer.cs">
+      <DependentUpon>201712042033237_AddResultAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712070058574_ModifyClassStudent.cs" />
+    <Compile Include="Migrations\201712070058574_ModifyClassStudent.Designer.cs">
+      <DependentUpon>201712070058574_ModifyClassStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712121857537_role.cs" />
+    <Compile Include="Migrations\201712121857537_role.Designer.cs">
+      <DependentUpon>201712121857537_role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712122151070_LinkUser.cs" />
+    <Compile Include="Migrations\201712122151070_LinkUser.Designer.cs">
+      <DependentUpon>201712122151070_LinkUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BoardOfDirector.cs" />
@@ -330,6 +360,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Student.cs" />
@@ -340,7 +371,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ClassFromViewModel.cs" />
     <Compile Include="ViewModel\ClassSubjectViewModel.cs" />
+    <Compile Include="ViewModel\ResultViewModel.cs" />
+    <Compile Include="ViewModel\RoleViewModel.cs" />
     <Compile Include="ViewModel\StudentClassViewModel.cs" />
+    <Compile Include="ViewModel\TeacherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -470,6 +504,174 @@
     </Content>
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="WebsiteTemplate\404.html" />
+    <Content Include="WebsiteTemplate\blog-archive.html" />
+    <Content Include="WebsiteTemplate\blog-single.html" />
+    <Content Include="WebsiteTemplate\contact.html" />
+    <Content Include="WebsiteTemplate\course-archive.html" />
+    <Content Include="WebsiteTemplate\course-single.html" />
+    <Content Include="WebsiteTemplate\css\ajax-loader.gif" />
+    <Content Include="WebsiteTemplate\css\animate.css" />
+    <Content Include="WebsiteTemplate\css\bootstrap.min.css" />
+    <Content Include="WebsiteTemplate\css\font-awesome.min.css" />
+    <Content Include="WebsiteTemplate\css\jquery.circliful.css" />
+    <Content Include="WebsiteTemplate\css\jquery.tosrus.all.css" />
+    <Content Include="WebsiteTemplate\css\slick.css" />
+    <Content Include="WebsiteTemplate\css\superslides.css" />
+    <Content Include="WebsiteTemplate\css\themes\bridge-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\dark-red-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\default-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\green-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\lite-blue-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\orange-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\pink-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\purple-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\red-theme.css" />
+    <Content Include="WebsiteTemplate\css\themes\yellow-theme.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\ie.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\buttons\icons\cross.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\buttons\icons\key.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\buttons\icons\tick.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\buttons\readme.txt" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\buttons\screen.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\fancy-type\readme.txt" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\fancy-type\screen.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\doc.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\email.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\external.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\feed.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\im.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\pdf.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\visited.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\icons\xls.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\readme.txt" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\link-icons\screen.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\rtl\readme.txt" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\rtl\screen.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\print.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\screen.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\forms.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\grid.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\grid.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\ie.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\print.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\reset.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\src\typography.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\images\favicon.png" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\index.html" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shAutoloader.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushAS3.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushBash.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushCpp.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushCss.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushDiff.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushErlang.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushJava.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushJScript.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushPerl.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushPhp.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushPlain.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushPython.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushRuby.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushSass.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushScala.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushSql.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushVb.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shBrushXml.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shCore.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\scripts\shLegacy.js" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCore.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreDefault.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreDjango.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreEclipse.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreEmacs.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreMDUltra.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreMidnight.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shCoreRDark.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeDefault.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeDjango.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeEclipse.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeEmacs.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeMDUltra.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeMidnight.css" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="WebsiteTemplate\events-archive.html" />
+    <Content Include="WebsiteTemplate\events-single.html" />
+    <Content Include="WebsiteTemplate\fonts\fontawesome-webfont.svg" />
+    <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="WebsiteTemplate\gallery.html" />
+    <Content Include="WebsiteTemplate\img\author.jpg" />
+    <Content Include="WebsiteTemplate\img\author2.jpg" />
+    <Content Include="WebsiteTemplate\img\banner.jpg" />
+    <Content Include="WebsiteTemplate\img\blog.jpg" />
+    <Content Include="WebsiteTemplate\img\bootom-top-arrow.png" />
+    <Content Include="WebsiteTemplate\img\course-1.jpg" />
+    <Content Include="WebsiteTemplate\img\course-2.jpg" />
+    <Content Include="WebsiteTemplate\img\course-3.jpg" />
+    <Content Include="WebsiteTemplate\img\course-nav-next.png" />
+    <Content Include="WebsiteTemplate\img\course-nav-prev.png" />
+    <Content Include="WebsiteTemplate\img\course-single.jpg" />
+    <Content Include="WebsiteTemplate\img\events-slider1.jpg" />
+    <Content Include="WebsiteTemplate\img\events-slider2.jpg" />
+    <Content Include="WebsiteTemplate\img\events-slider3.jpg" />
+    <Content Include="WebsiteTemplate\img\events.jpg" />
+    <Content Include="WebsiteTemplate\img\favicon.ico" />
+    <Content Include="WebsiteTemplate\img\gallery\img-large1.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-large2.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-large3.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-large4.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-small1.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-small2.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-small3.jpg" />
+    <Content Include="WebsiteTemplate\img\gallery\img-small4.jpg" />
+    <Content Include="WebsiteTemplate\img\logo-dark.png" />
+    <Content Include="WebsiteTemplate\img\logo.png" />
+    <Content Include="WebsiteTemplate\img\nav-next.png" />
+    <Content Include="WebsiteTemplate\img\nav-prev.png" />
+    <Content Include="WebsiteTemplate\img\nav.png" />
+    <Content Include="WebsiteTemplate\img\news.jpg" />
+    <Content Include="WebsiteTemplate\img\notice.jpg" />
+    <Content Include="WebsiteTemplate\img\side-add.jpg" />
+    <Content Include="WebsiteTemplate\img\skills_bg.jpg" />
+    <Content Include="WebsiteTemplate\img\slider\2.jpg" />
+    <Content Include="WebsiteTemplate\img\slider\3.jpg" />
+    <Content Include="WebsiteTemplate\img\slider\4.jpg" />
+    <Content Include="WebsiteTemplate\img\slider\navigation-icon.png" />
+    <Content Include="WebsiteTemplate\img\wpf-favicon.png" />
+    <Content Include="WebsiteTemplate\index.html" />
+    <Content Include="WebsiteTemplate\js\bootstrap.min.js" />
+    <Content Include="WebsiteTemplate\js\circliful.min.js" />
+    <Content Include="WebsiteTemplate\js\custom.js" />
+    <Content Include="WebsiteTemplate\js\FlameViewportScale.js" />
+    <Content Include="WebsiteTemplate\js\jquery.animate-enhanced.min.js" />
+    <Content Include="WebsiteTemplate\js\jquery.easing.1.3.js" />
+    <Content Include="WebsiteTemplate\js\jquery.js" />
+    <Content Include="WebsiteTemplate\js\jquery.min.js" />
+    <Content Include="WebsiteTemplate\js\jquery.superslides.min.js" />
+    <Content Include="WebsiteTemplate\js\jquery.tosrus.min.all.js" />
+    <Content Include="WebsiteTemplate\js\queryloader2.min.js" />
+    <Content Include="WebsiteTemplate\js\slick.min.js" />
+    <Content Include="WebsiteTemplate\js\wow.min.js" />
+    <Content Include="WebsiteTemplate\license-README-FIRST.txt" />
+    <Content Include="WebsiteTemplate\Login\css\style.css" />
+    <Content Include="WebsiteTemplate\Login\js\index.js" />
+    <Content Include="WebsiteTemplate\scholarship.html" />
+    <Content Include="WebsiteTemplate\style.css" />
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\School.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -603,9 +805,37 @@
     <Content Include="Views\Student\StudentForm.cshtml" />
     <Content Include="Views\StudentClass\Index.cshtml" />
     <Content Include="Views\StudentClass\StudentClass.cshtml" />
+    <Content Include="Views\StudentClass\Subject.cshtml" />
+    <Content Include="Views\StudentClass\SubjectForm.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="WebsiteTemplate\DOCUMENTATION\assets\blueprint-css\plugins\.DS_Store" />
+    <Content Include="WebsiteTemplate\fonts\fontawesome-webfont.eot" />
+    <Content Include="WebsiteTemplate\fonts\fontawesome-webfont.ttf" />
+    <Content Include="WebsiteTemplate\fonts\fontawesome-webfont.woff" />
+    <Content Include="WebsiteTemplate\fonts\FontAwesome.otf" />
+    <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebsiteTemplate\css\Thumbs.db" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\StudentLaw.cshtml" />
+    <Content Include="Views\Home\Admission.cshtml" />
+    <Content Include="Views\BoardOfDirector\GoverningBody.cshtml" />
+    <Content Include="Views\Teacher\TeacherInfo.cshtml" />
+    <Content Include="Views\Staff\StaffInfo.cshtml" />
+    <Content Include="WebsiteTemplate\Login\sass\style.sass" />
+    <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="WebsiteTemplate\css\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -678,6 +908,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711252142284_UpdateStudentClass.resx">
       <DependentUpon>201711252142284_UpdateStudentClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031942080_AddResult.resx">
+      <DependentUpon>201712031942080_AddResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712032130411_AddResult1.resx">
+      <DependentUpon>201712032130411_AddResult1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042028104_RemoveResult.resx">
+      <DependentUpon>201712042028104_RemoveResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042033237_AddResultAgain.resx">
+      <DependentUpon>201712042033237_AddResultAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712070058574_ModifyClassStudent.resx">
+      <DependentUpon>201712070058574_ModifyClassStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712121857537_role.resx">
+      <DependentUpon>201712121857537_role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712122151070_LinkUser.resx">
+      <DependentUpon>201712122151070_LinkUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

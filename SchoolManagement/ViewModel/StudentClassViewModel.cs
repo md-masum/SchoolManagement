@@ -28,5 +28,28 @@ namespace SchoolManagement.ViewModel
 
         public IEnumerable<Class> Class { get; set; }
         public int ClassId { get; set; }
+
+
+
+        //FOr StudentSubject
+        public Class ClassS { get; set; }
+
+        public IEnumerable<ClassInfo> ClassInfos { get; set; }
+
+        [Display(Name = "Class")]
+        public byte ClassInfoId { get; set; }
+
+        public IEnumerable<Section> Sections { get; set; }
+
+        [Display(Name = "Section")]
+        public byte SectionId { get; set; }
+
+        public IEnumerable<Department> Departments { get; set; }
+        [Display(Name = "Department")]
+        public byte? DepartmentId { get; set; }
+
+        public IEnumerable<Subject> Subject { get; set; }
+
+        public IEnumerable<Result> Results { get; set; }
     }
 }

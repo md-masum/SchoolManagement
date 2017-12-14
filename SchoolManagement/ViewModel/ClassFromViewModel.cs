@@ -32,5 +32,8 @@ namespace SchoolManagement.ViewModel
         public int? ClassSubjectId { get; set; }
 
         public IEnumerable<Subject> Subject { get; set; }
+
+        public IEnumerable<StudentClass> StudentClasses { get; set; }
+        public IEnumerable<Result> Results { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using SchoolManagement.Models;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StaffController : Controller
     {
         private ApplicationDbContext _context;
@@ -26,6 +27,7 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult StaffInfo()
         {
             var staff = _context.Staffs.ToList();

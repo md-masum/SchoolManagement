@@ -11,6 +11,7 @@ using System.Data.Entity.Validation;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize]
     public class StudentClassController : Controller
     {
         private ApplicationDbContext _context;

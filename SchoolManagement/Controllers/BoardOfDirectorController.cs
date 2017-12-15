@@ -7,6 +7,7 @@ using SchoolManagement.Models;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BoardOfDirectorController : Controller
     {
         private ApplicationDbContext _context;
@@ -28,6 +29,7 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult GoverningBody()
         {
             var boardOfdirector = _context.BoardOfDirectors.ToList();

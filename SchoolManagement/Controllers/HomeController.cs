@@ -13,6 +13,27 @@ namespace SchoolManagement.Controllers
     {
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                    return RedirectToAction("AdminHome", "Home");
+                if (User.IsInRole("Teacher"))
+                    return RedirectToAction("TeacherHome", "Home");
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult AdminHome()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Teacher")]
+        public ActionResult TeacherHome(int? id)
+        {
             return View();
         }
 

@@ -832,6 +832,9 @@
     <Content Include="Views\Staff\StaffInfo.cshtml" />
     <Content Include="WebsiteTemplate\Login\sass\style.sass" />
     <Content Include="WebsiteTemplate\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Home\TeacherHome.cshtml" />
+    <Content Include="Views\Home\AdminHome.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

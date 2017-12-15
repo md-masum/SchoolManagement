@@ -1,8 +1,15 @@
 ﻿@using System.Web.Mvc.Html
 @model SchoolManagement.Models.Student
 @{
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (this.User.IsInRole("Teacher"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Student";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2 class="">Student Form</h2>

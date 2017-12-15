@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TeachersController : Controller
     {
         private ApplicationUserManager _userManager;

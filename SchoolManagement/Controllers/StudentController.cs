@@ -8,6 +8,7 @@ using SchoolManagement.Models;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         private ApplicationDbContext _context;

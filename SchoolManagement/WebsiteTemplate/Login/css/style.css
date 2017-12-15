@@ -71,6 +71,11 @@
   font-size: 12px;
 }
 
+.text-color {
+  color:red;
+  font-size: 12px;
+}
+
 .form .message a {
   color: #EF3B3A;
   text-decoration: none;

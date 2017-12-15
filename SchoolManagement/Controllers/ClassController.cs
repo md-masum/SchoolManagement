@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize]
     public class ClassController : Controller
     {
         private ApplicationDbContext _context;

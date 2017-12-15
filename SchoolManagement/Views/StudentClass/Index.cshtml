@@ -1,10 +1,17 @@
 ﻿@model SchoolManagement.ViewModel.StudentClassViewModel
 @{
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (this.User.IsInRole("Teacher"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Student Information</h2>
 
 <div class="row">
     <div class="col-md-6">

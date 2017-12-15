@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<SchoolManagement.Models.Student>
 @{
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (this.User.IsInRole("Teacher"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h1 class="text-center text-primary">

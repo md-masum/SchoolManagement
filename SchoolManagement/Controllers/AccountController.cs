@@ -72,6 +72,16 @@ namespace SchoolManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if(User.IsInRole("Admin"))
+                    return RedirectToAction("AdminHome", "Home");
+                if(User.IsInRole("Teacher"))
+                    return RedirectToAction("TeacherHome", "Home");
+
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -151,7 +161,7 @@ namespace SchoolManagement.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
             List<SelectListItem> list = new List<SelectListItem>();
@@ -168,7 +178,7 @@ namespace SchoolManagement.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -484,6 +494,7 @@ namespace SchoolManagement.Controllers
             {
                 return Redirect(returnUrl);
             }
+            
             return RedirectToAction("Index", "Home");
         }
 

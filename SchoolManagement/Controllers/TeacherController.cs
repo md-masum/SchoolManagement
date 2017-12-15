@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TeacherController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -46,6 +47,7 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult TeacherInfo()
         {
             var teacher = _context.Teachers.ToList();

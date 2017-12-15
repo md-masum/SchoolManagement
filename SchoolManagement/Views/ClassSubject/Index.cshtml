@@ -1,8 +1,15 @@
 ﻿@using System.Web.Mvc.Html
 @model SchoolManagement.ViewModel.ClassSubjectViewModel
 @{
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (this.User.IsInRole("Teacher"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="row">

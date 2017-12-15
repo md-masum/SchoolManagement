@@ -1,8 +1,15 @@
 ﻿@using System.Web.Mvc.Html
 @model SchoolManagement.Models.Result
 @{
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (this.User.IsInRole("Teacher"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "SubjectForm";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Subject Result</h2>

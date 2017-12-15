@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace SchoolManagement.Controllers
 {
+    [Authorize]
     public class ClassSubjectController : Controller
     {
         private ApplicationDbContext _context;
@@ -57,6 +58,8 @@ namespace SchoolManagement.Controllers
         public ActionResult Save(ClassSubject classSubject)
         {
               int clsid = classSubject.ClassId;
+            var student = _context.Results.Where(c => c.ClassId == clsid).Select(c => new { c.StudentId }).Distinct().ToList();
+            var subject = _context.ClassSubjects.SingleOrDefault(c => c.ClassId == clsid && c.SubjectId == classSubject.SubjectId);
 
 
             if (!ModelState.IsValid)
@@ -65,7 +68,25 @@ namespace SchoolManagement.Controllers
             }
             else
             {
-                _context.ClassSubjects.Add(classSubject);
+                if (subject == null)
+                {
+                    _context.ClassSubjects.Add(classSubject);
+
+                    if (student.Any())
+                    {
+                        foreach (var id in student)
+                        {
+                            var result = new Result
+                            {
+                                StudentId = id.StudentId,
+                                SubjectId = classSubject.SubjectId,
+                                ClassId = clsid
+                            };
+                            _context.Results.Add(result);
+                            _context.SaveChanges();
+                        }
+                    }
+                }
             }
 
 

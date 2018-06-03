@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/2234a825-d00d-4015-b601-be340cf77e31/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/SchoolManagement</ApplicationInsightsResourceId>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -377,6 +378,7 @@
     <Compile Include="ViewModel\TeacherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -666,12 +668,18 @@
     <Content Include="WebsiteTemplate\Login\js\index.js" />
     <Content Include="WebsiteTemplate\scholarship.html" />
     <Content Include="WebsiteTemplate\style.css" />
+    <Content Include="ClassDiagram.cd" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
     <None Include="Properties\PublishProfiles\School.pubxml" />
+    <None Include="Properties\PublishProfiles\School1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />

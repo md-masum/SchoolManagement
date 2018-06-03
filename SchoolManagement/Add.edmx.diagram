@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d1c8a4adb224f53a096ef4205072d75" Name="Diagram1" ZoomLevel="112">
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="6.625" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="6.125" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="2.125" PointY="7.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="5.875" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="4" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.BoardOfDirector" Width="1.5" PointX="6.625" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Class" Width="1.5" PointX="2.5" PointY="3.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.ClassInfo" Width="1.5" PointX="1.375" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.ClassSubject" Width="1.5" PointX="4.75" PointY="5.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Department" Width="1.5" PointX="2.5" PointY="1.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Result" Width="1.5" PointX="6.625" PointY="5.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Section" Width="1.5" PointX="2.375" PointY="5.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Staff" Width="1.5" PointX="6.625" PointY="3.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.StudentClass" Width="1.5" PointX="4.375" PointY="1.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Student" Width="1.625" PointX="2" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Subject" Width="1.5" PointX="2.5" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Teacher" Width="1.5" PointX="6.625" PointY="2.625" IsExpanded="false" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Classes_dbo_ClassInfoes_ClassInfoId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Classes_dbo_Departments_DepartmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Classes_dbo_Sections_SectionId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_ClassSubjects_dbo_Classes_Class_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Results_dbo_Classes_ClassId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_StudentClasses_dbo_Classes_ClassId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_ClassSubjects_dbo_Subjects_Subject_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Results_dbo_Students_StudentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Results_dbo_Subjects_SubjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_StudentClasses_dbo_Students_StudentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

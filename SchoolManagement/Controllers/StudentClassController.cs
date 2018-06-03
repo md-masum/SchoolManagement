@@ -130,7 +130,7 @@ namespace SchoolManagement.Controllers
             {
                 Student = _context.Students.Single(c => c.Id == id),
                 ClassS = _context.Classes.Include(c => c.ClassInfo).Include(c => c.Department).Include(c => c.Section).SingleOrDefault(c => c.Id == classId),
-                Results = _context.Results.Include(c => c.Subject).Where(c => c.ClassId == classId).ToList()
+                Results = _context.Results.Include(c => c.Subject).Where(c => c.ClassId == classId).Where(c => c.StudentId == id).ToList()
             };
 
             if (data.Student == null)

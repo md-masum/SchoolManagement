@@ -2,8 +2,25 @@
 
 @{
     ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+    <!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="imgBanner">
+    <h2>History</h2>
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<!--=========== BEGIN GALLERY SECTION ================-->
+<section id="errorpage">
+    <div class="container">
+        <div class="error_page_content">
+            <h1>404</h1>
+            <h2>Sorry :(</h2>
+            <h3>This page doesn't exist.</h3>
+            <p class="wow fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">Please, continue to our <a href="@Url.Action("Index", "Home")">Home page</a></p>
+        </div>
+    </div>
+</section>
+<!--=========== END GALLERY SECTION ================-->
 
